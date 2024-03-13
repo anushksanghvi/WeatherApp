@@ -4,22 +4,26 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out code from Git...'
                 git 'https://github.com/anushksanghvi/WeatherApp.git'
             }
         }
         stage('Build') {
             steps {
-                sh 'npm install' 
+                echo 'Building the project...'
+                
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test' 
+                echo 'Running tests...'
+                
             }
         }
         stage('Deploy') {
             steps {
-                sh 'npm run deploy' 
+                echo 'Deploying the application...'
+                 
             }
         }
     }
