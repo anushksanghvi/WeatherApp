@@ -1,0 +1,16 @@
+{
+    "name": "weather-app",
+    "builds": [
+      {
+        "src": "Dockerfile",
+        "use": "@vercel/docker"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.html"
+      }
+    ]
+  }
+  
