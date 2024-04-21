@@ -90,6 +90,7 @@ function displayImageContent(data) {
     <h3 class="cloudtxt">${data.weather[0].description}</h3>`;
 }
 
+
 // display the right side content
 function rightSideContent(result) {
   return `<div class="content">
