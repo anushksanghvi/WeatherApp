@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # Install the Vercel CLI
-RUN npm install -g vercel
+RUN apt-get update && apt-get install -y nodejs npm && npm install -g vercel
 
 # Copy the HTML, CSS, and JS files to the Nginx server's default location
 COPY index.html /usr/share/nginx/html/index.html
