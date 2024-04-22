@@ -4,23 +4,40 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                
-                git 'https://github.com/anushksanghvi/WeatherApp.git'
+                git(
+                    url: 'https://github.com/anushksanghvi/WeatherApp.git',
+                    branch: 'main'
+                )
             }
         }
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                sh 'npm install' 
+                script {
+                sh 'docker build -t anushksanghvi/weatherappcicd:v1.0 .'
+                }
             }
         }
-        stage('Test') {
+        stage('Docker Login') {
             steps {
-                sh 'npm test' 
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubId', variable: 'dockerhubpwd')]) {
+                        sh "docker login -u anushksanghvi -p ${dockerhubpwd}"
+                    }
+                }
             }
         }
-        stage('Deploy') {
+        stage('Push Docker Image') {
             steps {
-                sh 'npm run deploy' 
+                script {
+                sh 'docker push anushksanghvi/weatherappcicd:v1.0'
+                }
+            }
+        }
+        stage('Docker Deploy') {
+            steps {
+                script {
+                sh 'docker run -itd -p 9000:8080 anushksanghvi/weatherappcicd:v1.0'
+                }
             }
         }
     }
