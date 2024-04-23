@@ -44,7 +44,7 @@ btnEl.addEventListener("click", (e) => {
     inputEl.value = "";
     findLocation(Search);
   } else {
-    console.log("Please add Location");
+    console.log("Please add location");
   }
 });
 
