@@ -63,6 +63,7 @@ async function findLocation(name) {
       const ImageContent = displayImageContent(result);
 
       // display right side content
+      
       const rightSide = rightSideContent(result);
 
       // forecast function
@@ -82,6 +83,7 @@ async function findLocation(name) {
 }
 
 // display image content and temp
+
 function displayImageContent(data) {
   return `<img src="https://openweathermap.org/img/wn/${
     data.weather[0].icon
