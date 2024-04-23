@@ -33,10 +33,10 @@ pipeline {
                 }
             }
         }
-        stage('Docker Deploy') {
+        stage('Deploy') {
             steps {
                 script {
-                sh 'docker run -itd -p 9000:8080 anushksanghvi/weatherappcicd:v1.0'
+                sh 'docker run -itd -p 9002:9003 anushksanghvi/weatherappcicd:v1.0'
                 }
             }
         }
