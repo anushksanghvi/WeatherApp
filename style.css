@@ -149,7 +149,7 @@ body {
 .list_content ul li:hover {
   transform: scale(1.1);
   background-color: #88cde3;
-  color: #0e1111;
+  color: #0a0e0e;
   box-shadow: 0 5px 15px #2f9cc0;
   cursor: pointer;
 }
