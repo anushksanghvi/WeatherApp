@@ -1,13 +1,16 @@
-# Use the official Nginx image as the base image
-FROM nginx:latest
+# Use the official Nginx image from Docker Hub as a base image
+FROM nginx:alpine
 
-# Copy the HTML, CSS, and JS files to the Nginx server's default location
-COPY index.html /usr/share/nginx/html/index.html
-COPY style.css /usr/share/nginx/html/style.css
-COPY script.js /usr/share/nginx/html/script.js
+# Set the working directory in the container
+WORKDIR /usr/share/nginx/html
 
-# Expose the default Nginx port
-EXPOSE 9000
+# Remove the default Nginx static files
+RUN rm -rf ./*
 
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+# Copy the local HTML, CSS, and JS files to the Nginx directory
+COPY . .
+
+# Expose port 80 to allow traffic
+EXPOSE 80
+
+# No need for CMD as the Nginx base image already has the default command to start Nginx
